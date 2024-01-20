@@ -13,12 +13,21 @@ class BaseService {
             return this.contractInstances[address];
         };
         this.generateTxCallback = ({ rawTxMethod, from, value, gasSurplus, action, }) => async () => {
+            var _a;
             const txRaw = await rawTxMethod();
             const tx = Object.assign(Object.assign({}, txRaw), { from, value: value !== null && value !== void 0 ? value : utils_1.DEFAULT_NULL_VALUE_ON_TX });
-            tx.gasLimit = await (0, gasStation_1.estimateGasByNetwork)(tx, this.provider, gasSurplus);
+            try {
+                tx.gasLimit = await (0, gasStation_1.estimateGasByNetwork)(tx, this.provider, gasSurplus);
+            }
+            catch (error) {
+                console.log("Error generateTxCallback :::", error);
+                if (action) {
+                    tx.gasLimit = ethers_1.BigNumber.from(utils_1.gasLimitRecommendations[action].recommended);
+                }
+            }
             if (action &&
                 utils_1.gasLimitRecommendations[action] &&
-                tx.gasLimit.lte(ethers_1.BigNumber.from(utils_1.gasLimitRecommendations[action].limit))) {
+                ((_a = tx.gasLimit) === null || _a === void 0 ? void 0 : _a.lte(ethers_1.BigNumber.from(utils_1.gasLimitRecommendations[action].limit)))) {
                 tx.gasLimit = ethers_1.BigNumber.from(utils_1.gasLimitRecommendations[action].recommended);
             }
             return tx;

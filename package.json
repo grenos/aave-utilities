@@ -5,7 +5,7 @@
     "url": "https://github.com/aave/aave-utilities.git"
   },
   "private": true,
-  "version": "1.0.0",
+  "version": "4.2.0",
   "license": "MIT",
   "scripts": {
     "clean": "rimraf coverage && lerna run clean",

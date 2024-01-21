@@ -14,9 +14,9 @@
     "lint:staged": "lint-staged",
     "build": "lerna run build"
   },
-  "main": "./packages/contract-helpers",
-  "module": "./packages/contract-helpers",
-  "types": "./packages/contract-helpers",
+  "main": "./packages/contract-helpers/dist/cjs/index.js",
+  "module": "./packages/contract-helpers/dist/esm/index.js",
+  "types": "./packages/contract-helpers/dist/esm/index.d.ts",
   "workspaces": [
     "packages/*"
   ],

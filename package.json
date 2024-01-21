@@ -23,9 +23,9 @@
     "release:latest": "lerna publish --yes --conventional-commits --create-release github --message 'chore(release): publish [ci skip]'",
     "release:canary": "lerna publish --canary --ignore-scripts"
   },
-  "main": "./packages/contract-helpers/dist/cjs/index.js",
-  "module": "./packages/contract-helpers/dist/esm/index.js",
-  "types": "./packages/contract-helpers/dist/esm/index.d.ts",
+  "main": "./packages/contract-helpers",
+  "module": "./packages/contract-helpers",
+  "types": "./packages/contract-helpers",
   "workspaces": [
     "packages/*"
   ],

@@ -13,15 +13,6 @@
     "lint:fix": "lerna run lint -- --fix",
     "lint:staged": "lint-staged",
     "build": "lerna run build",
-    "prepare": "husky install",
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "precover": "rimraf coverage",
-    "cover": "jest --coverage",
-    "commit": "git-cz",
-    "release:check": "lerna changed",
-    "release:latest": "lerna publish --yes --conventional-commits --create-release github --message 'chore(release): publish [ci skip]'",
-    "release:canary": "lerna publish --canary --ignore-scripts"
   },
   "main": "./packages/contract-helpers",
   "module": "./packages/contract-helpers",
@@ -34,11 +25,6 @@
       "@commitlint/config-conventional",
       "@commitlint/config-lerna-scopes"
     ]
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
   },
   "release": {
     "branch": "master"
